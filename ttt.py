@@ -1,6 +1,16 @@
 #!/usr/bin/env python
 
+#--------------------------------------------
+#
 # tic tac toe
+#
+# Copyright (C) 2017 Reliance Systems, Inc.
+#
+# Author: Matt Krueger <mkrueger@rstms.net>
+# Date: 2017-08-24
+# http://www.rstms.net
+#
+#--------------------------------------------
 
 from random import choice
 
@@ -17,11 +27,13 @@ class Board(object):
         return [c[row[r]+1] for r in range(3)]
 
     def row_str(self, r):
+        """return row of board graph"""
         c = [r+1]
         c.extend(self.row_chars(self.cells[r]))
         return '%d  %c | %c | %c ' % tuple(c)
 
     def print(self, msg):
+        """display board state"""
         print()
         if msg:
             print('%s\n' % msg)
@@ -47,9 +59,11 @@ class Board(object):
         return self.winner != 0
 
     def make_set(self, pairs):
-       return [self.cells[t[0]][t[1]] for t in pairs]
+        """return a set of cell values for a given set of index pairs"""
+        return [self.cells[t[0]][t[1]] for t in pairs]
 
     def check_win(self):
+        """check for end of game condition"""
         #print('check_win cells: %s' % repr(self.cells))
         for iset in self.generate_set_indices():
             if self.check_win_set(self.make_set(iset)):
