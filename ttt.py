@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from builtins import input
+
 #--------------------------------------------
 #
 # tic tac toe
@@ -202,11 +205,11 @@ class Game(object):
             resp=''.join(l)
         if len(resp) != 3:
             msg = 'input must be exactly 3 characters'
-        elif not resp[0].isnumeric():
+        elif not ('0' <= resp[0] <= '9'):
             msg = 'input must begin with a number'
         elif not resp[1] == ',':
             msg = 'input must be in the form of NUMBER,LETTER'
-        elif not resp[-1].isalpha():
+        elif not ('A' <= resp[-1] <= 'Z'):
             msg = 'input must end with a letter'
         else:
             ret = resp
